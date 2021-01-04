@@ -1,10 +1,16 @@
-import { render } from '@testing-library/react';
-import {Fragment} from 'react';
 import React, { Component } from 'react';
 import Header from './Header.js';
 import './App.css';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      subscribersListToShow: []
+    }
+  }
+
   render() {
 
     let subscribers = [
@@ -19,19 +25,19 @@ class App extends Component {
         phone: "9999999999"
       }
     ];
-      return (
-      
+
+    return (
       <div>
-        <Header heading = "Phone Directory"/>
+        <Header heading="Phone Directory" />
         <div className="component-body-container">
-            
-            <button className="custom-btn add-btn">Add</button>
-            
-            <div className="grid-container heading-container">
-              <span className="grid-item name-heading">Name</span>
-              <span className="grid-item phone-heading">Phone</span>
-            </div>
-            {
+          <button className="custom-btn add-btn">Add</button>
+
+          <div className="grid-container heading-container">
+            <span className="grid-item name-heading">Name</span>
+            <span className="grid-item phone-heading">Phone</span>
+          </div>
+
+          {
             subscribers.map(sub => {
               return <div key={sub.id} className="grid-container">
                 <span className="grid-item">{sub.name}</span>
@@ -43,8 +49,7 @@ class App extends Component {
             })
           }
         </div>
-    </div>
-    
+      </div>
     );
   }
 }
